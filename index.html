@@ -1,153 +1,155 @@
-<!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
-  <!-- Meta Tags -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Système de suivi des interventions techniques">
-  <meta name="author" content="Oussama Almouallim">
-  
-  <!-- Page Title -->
-  <title>Rapport d'Intervention Technique</title>
-  
-  <!-- External Libraries -->
+  <title>Formulaire d'Intervention Technique</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
-  
-  <!-- Stylesheets -->
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
   <div class="form-container">
-    <!-- Header -->
-    <div class="form-header">
-      <h1>Rapport d'Intervention Technique</h1>
-      <p class="form-subtitle">Système de Suivi des Interventions</p>
-    </div>
-
-    <!-- Main Form -->
+    <h1>Rapport d'Intervention Technique</h1>
     <form id="technicianForm">
-      
-      <!-- Section 1: Technicien Info -->
-      <fieldset class="form-section">
-        <legend>Informations du Technicien</legend>
-        
-        <div class="form-group">
-          <label for="technicianName">Nom du Technicien:</label>
-          <select id="technicianName" name="technicianName" required>
-            <option value="">Sélectionnez un technicien</option>
-            <option value="DRISS">DRISS</option>
-            <option value="BRAHIM">BRAHIM</option>
-            <option value="MOUSSTAFA">MOUSSTAFA</option>
-            <option value="YOUSSEF">YOUSSEF</option>
-            <option value="ACHRAF">ACHRAF</option>
-            <option value="AYMEN">AYMEN</option>
-            <option value="REDA">REDA</option>
-            <option value="ABDERAHMAN">ABDERAHMAN</option>
-            <option value="OUSSAMA">OUSSAMA</option>
-            <option value="ASOPHI">ASOPHI</option>
-            <option value="autre">Autre</option>
-          </select>
-        </div>
-      </fieldset>
+      <div class="form-group">
+        <label for="technicianName">Nom du Technicien:</label>
+        <select id="technicianName" name="technicianName" required>
+          <option value="">Sélectionnez un technicien</option>
+          <option value="DRISS">DRISS</option>
+          <option value="BRAHIM">BRAHIM</option>
+          <option value="MOUSSTAFA">MOUSSTAFA</option>
+          <option value="YOUSSEF">YOUSSEF</option>
+          <option value="ACHRAF">ACHRAF</option>
+          <option value="AYMEN">AYMEN</option>
+          <option value="REDA">REDA</option>
+          <option value="ABDERAHMAN">ABDERAHMAN</option>
+          <option value="OUSSAMA">OUSSAMA</option>
+          <option value="ASOPHI">ASOPHI</option>
+          <option value="autre">Autre</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="submissionDate">Date de Soumission:</label>
+        <input type="date" id="submissionDate" name="submissionDate" required>
+      </div>
 
-      <!-- Section 2: Project Info -->
-      <fieldset class="form-section">
-        <legend>Informations du Projet</legend>
-        
-        <div class="form-group">
-          <label for="projectName">Nom du Projet/Client:</label>
-          <input type="text" id="projectName" name="projectName" placeholder="Ex: Projet ABC, Client XYZ" required>
-        </div>
+      <div class="form-group">
+        <label for="projectName">Nom du Projet/Client:</label>
+        <input type="text" id="projectName" name="projectName" required>
+      </div>
 
-        <div class="form-group">
-          <label for="submissionDate">Date de Soumission:</label>
-          <input type="date" id="submissionDate" name="submissionDate" required>
-        </div>
-      </fieldset>
+      <div class="form-group">
+        <label>Date et Heure:</label>
+        <div id="datetime"></div>
+        <input type="hidden" name="dateTime" id="dateTimeInput">
+      </div>
 
-      <!-- Section 3: Date & Time -->
-      <fieldset class="form-section">
-        <legend>Données Temporelles</legend>
-        
-        <div class="form-group">
-          <label>Date et Heure (Automatique):</label>
-          <div id="datetime" class="info-box"></div>
-          <input type="hidden" name="dateTime" id="dateTimeInput">
-        </div>
-      </fieldset>
+      <div class="form-group">
+        <label>Localisation:</label>
+        <div id="location">Recherche de la position...</div>
+        <input type="hidden" name="location" id="locationInput">
+      </div>
 
-      <!-- Section 4: Location -->
-      <fieldset class="form-section">
-        <legend>Localisation</legend>
-        
-        <div class="form-group">
-          <label>Position GPS (Automatique):</label>
-          <div id="location" class="info-box">Recherche de la position...</div>
-          <input type="hidden" name="location" id="locationInput">
-        </div>
-      </fieldset>
+      <div class="form-group">
+        <label>Type d'Intervention:</label>
+        <select id="interventionType" name="interventionType" required>
+          <option value="">Sélectionnez le type</option>
+          <option value="electricite">Électricité</option>
+          <option value="domotique">Programmation (Domotique)</option>
+          <option value="climatisation/chauffage">Climatisation/Chauffage</option>
+          <option value="sonorisation">Sonorisation</option>
+          <option value="videophone">Vidéophone</option>
+          <option value="supervision">Supervision</option>
+          <option value="autre">Autre</option>
+        </select>
+      </div>
 
-      <!-- Section 5: Intervention Type -->
-      <fieldset class="form-section">
-        <legend>Type d'Intervention</legend>
-        
-        <div class="form-group">
-          <label for="interventionType">Type d'Intervention:</label>
-          <select id="interventionType" name="interventionType" required>
-            <option value="">Sélectionnez le type</option>
-            <option value="electricite">Électricité</option>
-            <option value="domotique">Programmation (Domotique)</option>
-            <option value="climatisation/chauffage">Climatisation/Chauffage</option>
-            <option value="sonorisation">Sonorisation</option>
-            <option value="videophone">Vidéophone</option>
-            <option value="supervision">Supervision</option>
-            <option value="autre">Autre</option>
-          </select>
-        </div>
+      <div class="form-group">
+        <label>Nature du Problème:</label>
+        <select id="problemType" name="natureProbleme" required>
+          <option value>Sélectionnez le problème</option>
+        </select>
+      </div>
 
-        <div class="form-group">
-          <label for="problemType">Type de Problème:</label>
-          <select id="problemType" name="problemType" required>
-            <option value="">Sélectionnez le problème</option>
-          </select>
+      <div class="form-group">
+        <label>État de l'Intervention:</label>
+        <div class="radio-group">
+          <div class="radio-option">
+            <input type="radio" id="repare" name="status" value="repare" required>
+            <label for="repare">Réparé</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="remplacement" name="status" value="remplacement">
+            <label for="remplacement">Remplacement de pièce</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="maintenance" name="status" value="maintenance">
+            <label for="maintenance">Maintenance préventive</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" id="autre" name="status" value="autre">
+            <label for="autre">Autre</label>
+          </div>
         </div>
-      </fieldset>
+      </div>
 
-      <!-- Section 6: Response & Notes -->
-      <fieldset class="form-section">
-        <legend>Détails de l'Intervention</legend>
-        
-        <div class="form-group">
-          <label for="description">Description de l'intervention:</label>
-          <textarea id="description" name="description" rows="5" placeholder="Décrivez les actions effectuées..."></textarea>
-        </div>
+      <div class="form-group">
+        <label for="interventionStatus">Statut de l'intervention:</label>
+        <select id="interventionStatus" name="interventionStatus" required>
+          <option value="">Sélectionnez le statut</option>
+          <option value="en_cours">En cours</option>
+          <option value="terminee">Terminée</option>
+        </select>
+      </div>
 
-        <div class="form-group">
-          <label for="response">Réponse apportée:</label>
-          <textarea id="response" name="response" rows="4" placeholder="Résumé de la solution..."></textarea>
-        </div>
-      </fieldset>
+      <div class="form-group">
+        <label for="comments">Commentaires:</label>
+        <textarea id="comments" name="comments" placeholder="Ajoutez vos commentaires ici..."></textarea>
+      </div>
 
-      <!-- Section 7: Action Buttons -->
-      <fieldset class="form-section button-section">
-        <div class="button-group">
-          <button type="button" id="exportPDF" class="btn btn-primary">
-            📄 Exporter en PDF
-          </button>
-          <button type="button" id="exportExcel" class="btn btn-secondary">
-            📊 Exporter en Excel
-          </button>
-          <button type="reset" class="btn btn-reset">
-            ↺ Réinitialiser
+      <div class="summary-container">
+        <div class="summary-header">
+          <h3>Récapitulatif de l'Intervention</h3>
+          <button type="button" id="toggleSummary" class="toggle-summary">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+            </svg>
           </button>
         </div>
-      </fieldset>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" id="submitTogooglesheet" style="margin-top: 10px;">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19.376 12.416L8.777 19.482c-.7.046-.137.078-.217.078-.133 0-.262-.053-.353-.146-.157-.148-.194-.368-.094-.558l3.53-6.39H5c-.202 0-.373-.116-.443-.3-.074-.181-.026-.385.116-.504l10.62-7.303c.094-.063.209-.095.323-.095.183 0 .341.084.437.232.094.147.105.333.026.49l-3.53 6.562h6.37c.204 0 .38.127.448.306.068.18.015.38-.12.495z"/>
+          </svg>
+          Send to Google Sheet
+        </button>
+      </div>
     </form>
   </div>
 
-  <!-- Scripts -->
-  <script src="main.js" defer></script>
+  <div id="summaryModal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Récapitulatif de l'Intervention</h3>
+        <button class="close-modal" id="closeModal">&times;</button>
+      </div>
+      <div id="summaryTableContainer">
+        <table class="summary-table">
+          <tr>
+            <th>Champ</th>
+            <th>Sélection</th>
+          </tr>
+          <tbody id="summaryTableBody">
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/@supabase/supabase-js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
