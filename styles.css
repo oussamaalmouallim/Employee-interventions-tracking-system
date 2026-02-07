@@ -1,3 +1,17 @@
+/* ==========================================================================
+   TECHNICIAN FORM - PROFESSIONAL STYLESHEET
+   ========================================================================== */
+
+/* ==========================================================================
+   1. RESET & BASE STYLES
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Segoe UI', sans-serif;
   max-width: 800px;
@@ -14,6 +28,10 @@ body {
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
+/* ==========================================================================
+   2. FORM CONTAINER & LAYOUT
+   ========================================================================== */
 
 .form-container {
   background: url('https://www.ecoview.ae/wp-content/uploads/2022/02/TIS-LOGO-e1646026001988_01e0013b0.png') no-repeat;
@@ -40,6 +58,10 @@ body {
 .form-group:hover {
   transform: translateX(2px);
 }
+
+/* ==========================================================================
+   3. FORM ELEMENTS
+   ========================================================================== */
 
 label {
   display: block;
@@ -73,6 +95,54 @@ textarea:focus {
   outline: none;
 }
 
+/* Special input styling */
+#submissionDate {
+  background-color: #e9f7ff;
+  border: 1px solid #a0d2eb;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+#submissionDate:focus {
+  border-color: #4db6ac;
+  box-shadow: 0 0 0 3px rgba(77, 182, 172, 0.25);
+  outline: none;
+  transform: translateY(-2px);
+}
+
+/* Select specific styling */
+#interventionType, 
+#problemType, 
+#interventionStatus, 
+#technicianName {
+  background-color: #fff;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+#interventionType:hover, 
+#problemType:hover, 
+#interventionStatus:hover, 
+#technicianName:hover {
+  border-color: #007bff;
+}
+
+/* Comments textarea */
+#comments {
+  transition: height 0.3s;
+}
+
+#comments:focus {
+  height: 150px;
+}
+
+/* ==========================================================================
+   4. RADIO BUTTONS
+   ========================================================================== */
+
 .radio-group {
   display: flex;
   gap: 15px;
@@ -89,6 +159,21 @@ textarea:focus {
 .radio-option:hover {
   transform: translateY(-2px);
 }
+
+input[type="radio"] {
+  accent-color: #007bff;
+  transform: scale(1.2);
+  transition: all 0.2s;
+}
+
+input[type="radio"]:checked + label {
+  color: #007bff;
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   5. BUTTONS & INTERACTIONS
+   ========================================================================== */
 
 button {
   background-color: #007bff;
@@ -125,6 +210,57 @@ button:hover:after {
   display: none;
 }
 
+button:active {
+  transform: scale(0.98);
+}
+
+/* Form action buttons */
+.form-actions button {
+  background-color: white;
+  color: #333;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.form-actions button svg {
+  width: 18px;
+  height: 18px;
+  transition: all 0.3s;
+}
+
+.form-actions button:hover svg {
+  transform: scale(1.2);
+}
+
+/* Specific button hover states */
+#submitTogooglesheet:hover, 
+#submitTogooglesheet.active {
+  background-color: #0f9d58;
+  color: white;
+  transform: translateY(-2px);
+}
+
+#submitToDatabase:hover, 
+#submitToDatabase.active {
+  background-color: #db4437;
+  color: white;
+  transform: translateY(-2px);
+}
+
+#submitToSupabase:hover, 
+#submitToSupabase.active {
+  background-color: #3ecf8e;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   6. TYPOGRAPHY & HEADINGS
+   ========================================================================== */
+
 h1 {
   color: #2c3e50;
   border-bottom: 2px solid #007bff;
@@ -143,6 +279,16 @@ h1:after {
   background-color: #0056b3;
   animation: none;
 }
+
+.summary-header h3,
+.modal-header h3 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+/* ==========================================================================
+   7. STATUS & INFO DISPLAY
+   ========================================================================== */
 
 #location {
   background: #f8f9fa;
@@ -182,6 +328,10 @@ h1:after {
   transform: translateY(-2px);
 }
 
+/* ==========================================================================
+   8. SUMMARY TABLE
+   ========================================================================== */
+
 .summary-table {
   width: 100%;
   margin: 20px 0;
@@ -220,102 +370,9 @@ h1:after {
   font-size: 1.1em;
 }
 
-/* Style pour le champ Date de Soumission */
-#submissionDate {
-  background-color: #e9f7ff;
-  border: 1px solid #a0d2eb;
-  border-radius: 8px;
-  padding: 12px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-#submissionDate:focus {
-  border-color: #4db6ac;
-  box-shadow: 0 0 0 3px rgba(77, 182, 172, 0.25);
-  outline: none;
-  transform: translateY(-2px);
-}
-
-#interventionType, #problemType, #interventionStatus, #technicianName {
-  background-color: #fff;
-  transition: all 0.3s;
-  cursor: pointer;
-}
-
-#interventionType:hover, #problemType:hover, #interventionStatus:hover, #technicianName:hover {
-  border-color: #007bff;
-}
-
-#comments {
-  transition: height 0.3s;
-}
-
-#comments:focus {
-  height: 150px;
-}
-
-input[type="radio"] {
-  accent-color: #007bff;
-  transform: scale(1.2);
-  transition: all 0.2s;
-}
-
-input[type="radio"]:checked + label {
-  color: #007bff;
-  font-weight: bold;
-}
-
-.form-actions button {
-  background-color: white;
-  color: #333;
-  padding: 12px 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: all 0.3s;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-
-.form-actions button:active {
-  transform: scale(0.98);
-}
-
-.form-actions button svg {
-  width: 18px;
-  height: 18px;
-  transition: all 0.3s;
-}
-
-.form-actions button:hover svg {
-  transform: scale(1.2);
-}
-
-#submitTogooglesheet:hover, #submitTogooglesheet.active {
-  background-color: #0f9d58;
-  color: white;
-  transform: translateY(-2px);
-}
-
-#submitToDatabase:hover, #submitToDatabase.active {
-  background-color: #db4437;
-  color: white;
-  transform: translateY(-2px);
-}
-
-#submitToSupabase:hover, #submitToSupabase.active {
-  background-color: #3ecf8e;
-  color: white;
-  transform: translateY(-2px);
-}
+/* ==========================================================================
+   9. SUMMARY CONTAINER & TOGGLE
+   ========================================================================== */
 
 .summary-container {
   position: relative;
@@ -331,11 +388,6 @@ input[type="radio"]:checked + label {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
-}
-
-.summary-header h3 {
-  margin: 0;
-  color: #2c3e50;
 }
 
 .toggle-summary {
@@ -371,23 +423,9 @@ input[type="radio"]:checked + label {
   display: none;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes fadeOut {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
-
-.summary-fade-in {
-  animation: fadeIn 0.4s ease forwards;
-}
-
-.summary-fade-out {
-  animation: fadeOut 0.4s ease forwards;
-}
+/* ==========================================================================
+   10. MODAL & ANIMATIONS
+   ========================================================================== */
 
 .modal-overlay {
   display: none;
@@ -425,11 +463,6 @@ input[type="radio"]:checked + label {
   padding-bottom: 10px;
 }
 
-.modal-header h3 {
-  margin: 0;
-  color: #2c3e50;
-}
-
 .close-modal {
   background: none;
   border: none;
@@ -455,12 +488,74 @@ input[type="radio"]:checked + label {
   opacity: 1;
 }
 
+/* Animation keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
 @keyframes popIn {
   0% { transform: scale(0.8); opacity: 0; }
   100% { transform: scale(1); opacity: 1; }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.summary-fade-in {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.summary-fade-out {
+  animation: fadeOut 0.4s ease forwards;
+}
+
+/* ==========================================================================
+   11. RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  body {
+    margin: 10px;
+    padding: 15px;
+  }
+  
+  .form-container {
+    padding: 20px;
+    background-size: 25%;
+  }
+  
+  .radio-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .modal-content {
+    width: 95%;
+    margin: 20px;
+  }
+}
+
+/* ==========================================================================
+   12. PRINT STYLES
+   ========================================================================== */
+
+@media print {
+  body {
+    background: white;
+    padding: 0;
+  }
+  
+  .form-container {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+  
+  button,
+  .toggle-summary,
+  .close-modal {
+    display: none;
+  }
 }
