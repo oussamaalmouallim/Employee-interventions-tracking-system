@@ -1,38 +1,153 @@
-<html>
+<!DOCTYPE html>
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Interventions Tracking System</title>
-    <link rel="stylesheet" href="styles.css">
+  <!-- Meta Tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Système de suivi des interventions techniques">
+  <meta name="author" content="Oussama Almouallim">
+  
+  <!-- Page Title -->
+  <title>Rapport d'Intervention Technique</title>
+  
+  <!-- External Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <header>
-        <h1>Employee Interventions Tracking System</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section>
-            <h2>Welcome to the Employee Interventions Tracking System</h2>
-            <p>This system is designed to help track and manage employee interventions efficiently.</p>
-        </section>
-        <section>
-            <h2>Features</h2>
-            <ul>
-                <li>Track employee performance</li>
-                <li>Manage interventions</li>
-                <li>Generate reports</li>
-            </ul>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2026 Employee Interventions Tracking System. All rights reserved.</p>
-    </footer>
+  <div class="form-container">
+    <!-- Header -->
+    <div class="form-header">
+      <h1>Rapport d'Intervention Technique</h1>
+      <p class="form-subtitle">Système de Suivi des Interventions</p>
+    </div>
+
+    <!-- Main Form -->
+    <form id="technicianForm">
+      
+      <!-- Section 1: Technicien Info -->
+      <fieldset class="form-section">
+        <legend>Informations du Technicien</legend>
+        
+        <div class="form-group">
+          <label for="technicianName">Nom du Technicien:</label>
+          <select id="technicianName" name="technicianName" required>
+            <option value="">Sélectionnez un technicien</option>
+            <option value="DRISS">DRISS</option>
+            <option value="BRAHIM">BRAHIM</option>
+            <option value="MOUSSTAFA">MOUSSTAFA</option>
+            <option value="YOUSSEF">YOUSSEF</option>
+            <option value="ACHRAF">ACHRAF</option>
+            <option value="AYMEN">AYMEN</option>
+            <option value="REDA">REDA</option>
+            <option value="ABDERAHMAN">ABDERAHMAN</option>
+            <option value="OUSSAMA">OUSSAMA</option>
+            <option value="ASOPHI">ASOPHI</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <!-- Section 2: Project Info -->
+      <fieldset class="form-section">
+        <legend>Informations du Projet</legend>
+        
+        <div class="form-group">
+          <label for="projectName">Nom du Projet/Client:</label>
+          <input type="text" id="projectName" name="projectName" placeholder="Ex: Projet ABC, Client XYZ" required>
+        </div>
+
+        <div class="form-group">
+          <label for="submissionDate">Date de Soumission:</label>
+          <input type="date" id="submissionDate" name="submissionDate" required>
+        </div>
+      </fieldset>
+
+      <!-- Section 3: Date & Time -->
+      <fieldset class="form-section">
+        <legend>Données Temporelles</legend>
+        
+        <div class="form-group">
+          <label>Date et Heure (Automatique):</label>
+          <div id="datetime" class="info-box"></div>
+          <input type="hidden" name="dateTime" id="dateTimeInput">
+        </div>
+      </fieldset>
+
+      <!-- Section 4: Location -->
+      <fieldset class="form-section">
+        <legend>Localisation</legend>
+        
+        <div class="form-group">
+          <label>Position GPS (Automatique):</label>
+          <div id="location" class="info-box">Recherche de la position...</div>
+          <input type="hidden" name="location" id="locationInput">
+        </div>
+      </fieldset>
+
+      <!-- Section 5: Intervention Type -->
+      <fieldset class="form-section">
+        <legend>Type d'Intervention</legend>
+        
+        <div class="form-group">
+          <label for="interventionType">Type d'Intervention:</label>
+          <select id="interventionType" name="interventionType" required>
+            <option value="">Sélectionnez le type</option>
+            <option value="electricite">Électricité</option>
+            <option value="domotique">Programmation (Domotique)</option>
+            <option value="climatisation/chauffage">Climatisation/Chauffage</option>
+            <option value="sonorisation">Sonorisation</option>
+            <option value="videophone">Vidéophone</option>
+            <option value="supervision">Supervision</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="problemType">Type de Problème:</label>
+          <select id="problemType" name="problemType" required>
+            <option value="">Sélectionnez le problème</option>
+          </select>
+        </div>
+      </fieldset>
+
+      <!-- Section 6: Response & Notes -->
+      <fieldset class="form-section">
+        <legend>Détails de l'Intervention</legend>
+        
+        <div class="form-group">
+          <label for="description">Description de l'intervention:</label>
+          <textarea id="description" name="description" rows="5" placeholder="Décrivez les actions effectuées..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="response">Réponse apportée:</label>
+          <textarea id="response" name="response" rows="4" placeholder="Résumé de la solution..."></textarea>
+        </div>
+      </fieldset>
+
+      <!-- Section 7: Action Buttons -->
+      <fieldset class="form-section button-section">
+        <div class="button-group">
+          <button type="button" id="exportPDF" class="btn btn-primary">
+            📄 Exporter en PDF
+          </button>
+          <button type="button" id="exportExcel" class="btn btn-secondary">
+            📊 Exporter en Excel
+          </button>
+          <button type="reset" class="btn btn-reset">
+            ↺ Réinitialiser
+          </button>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+
+  <!-- Scripts -->
+  <script src="main.js" defer></script>
 </body>
 </html>
