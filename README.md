@@ -6,19 +6,11 @@ The Employee Interventions Tracking System is designed to manage and track vario
 ## Technologies Used
 - **Frontend:**
   - HTML, CSS, JavaScript
-- **Backend:**
-  - Node.js with Express Framework
-- **Database:**
-  - MongoDB
-- **Authentication:**
-  - JSON Web Tokens (JWT)
 - **Deployment:**
   - Docker for containerization
-  - Heroku for hosting
+  - Github pages for hosting
 
 ## Features
-- User Registration and Authentication
-- Role-based access control
 - Dashboard to view employee interventions
 - Search and filter options for interventions
 - Real-time notifications for updates
@@ -45,4 +37,4 @@ If you wish to contribute to this project, feel free to fork the repository and 
 This project is licensed under the MIT License.
 
 ## Contact
-For more information, reach out to [Oussama Almouallim](mailto:youremail@example.com).
+For more information, reach out to [Oussama Almouallim](mailto:oussamakanouni39@gmail.com).
